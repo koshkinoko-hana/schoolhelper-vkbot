@@ -9,11 +9,9 @@ token = ""
 
 bh = vk_api.VkApi(token=token)
 vk = bh.get_api()
-res = bh.method('groups.getLongPollServer', {'group_id':  <>})
+res = bh.method('groups.getLongPollServer', {'group_id': })
 print(res)
-longpoll = VkBotLongPoll(bh, group_id=<>)
-
-admin_list = [199496482]
+longpoll = VkBotLongPoll(bh, group_id=)
 
 
 def send_message(user_id, additional):
