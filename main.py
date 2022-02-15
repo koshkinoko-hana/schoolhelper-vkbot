@@ -9,25 +9,14 @@ token = ""
 
 bh = vk_api.VkApi(token=token)
 vk = bh.get_api()
-res = bh.method('groups.getLongPollServer', {'group_id':  <>})
+res = bh.method('groups.getLongPollServer', {'group_id': })
 print(res)
-longpoll = VkBotLongPoll(bh, group_id=<>)
-
-admin_list = [199496482]
+longpoll = VkBotLongPoll(bh, group_id=)
 
 
 def send_message(user_id, additional):
     message_payload = {'peer_id': user_id, 'random_id': 0, **additional}
     bh.method('messages.send', message_payload)
-
-
-def send_message_keyboard(user_id, text, keyboard):
-    bh.method('messages.send', {'peer_id': user_id, 'random_id': 0, 'message': text, 'keyboard': keyboard})
-
-
-def send_message_attachment(user_id, text, attachment):
-    bh.method('messages.send', {'peer_id': user_id, 'random_id': 0, 'message': text, 'attachment': attachment})
-
 
 for event in longpoll.listen():
     print(event)
@@ -103,4 +92,4 @@ for event in longpoll.listen():
         wall_id = f'wall-{owner_id_}_{id_}'
         attachment = wall_id
         for key in users_to_inform:
-            send_message_attachment(key, 'Внимание! Новый пост!', attachment)
+            send_message(key, {'message': 'Внимание! Новый пост!', 'attachment': attachment})
